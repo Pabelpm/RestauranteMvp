@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">RestaurantMvp</string>
+
+    <!-- Textos -->
+    <string name="comanda_hint">Say us what you want</string>
+    <string name="encargar">Book your food</string>
+
+    <!-- ImageView Descriptions -->
+    <string name="description_comerce">Comerce icon like a restaurant</string>
+    <string name="description_restaurant">Restaurant icon</string>
+
+    <!-- Recipes -->
+    <string name="recipe_huevos_rotos">8 patatas (alrededor de 1kg). 4 huevos grandes. 200 gr de pimientos de padrón. 150 gr de jamón serrano. Pimienta negra recién molida. Aceite de oliva, sal común y (opcional) sal en escamas para espolvorear al final.</string>
+    <string name="recipe_not_exits">Sorry we havent this recipe.</string>
+
+    <!-- Errors -->
+    <string name="error_sentence_empty">The introduced chain should not be empty</string>
+    <string name="error_words">Please write two words at least</string>
+
+
+</resources>
