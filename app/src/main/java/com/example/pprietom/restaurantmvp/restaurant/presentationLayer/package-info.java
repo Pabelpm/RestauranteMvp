@@ -7,4 +7,4 @@
  * Yo he escrito un post acerca del MVP) y otro sobre MVVM si solo has utilizado MVC dale una mirada a estos posts por que te ayudarán a separar
  * tus vistas de la lógica de negocio de una forma elegante.
  */
-package com.example.pprietom.restaurantmvp.restaurant.PresentationLayer;
+package com.example.pprietom.restaurantmvp.restaurant.presentationLayer;

@@ -3,4 +3,4 @@
  * Se encuentran entidades y casos de uso regularmente es solo código java (puede ser kotlin o scala es indiferente)
  *  y no hay ninguna dependencia android.
  */
-package com.example.pprietom.restaurantmvp.restaurant.DomainLayer;
+package com.example.pprietom.restaurantmvp.restaurant.domainLayer;

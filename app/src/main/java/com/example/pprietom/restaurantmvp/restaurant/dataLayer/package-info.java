@@ -8,4 +8,4 @@
  * usamos mappers para estar cambiando objetos de datos a un objeto de dominio y de dominio a un objeto de nuestra vista no quiero indagar mucho aquí
  * pero cuando veas el código te darás cuenta de lo útil que es.
  */
-package com.example.pprietom.restaurantmvp.restaurant.DataLayer;
+package com.example.pprietom.restaurantmvp.restaurant.dataLayer;

@@ -1,4 +1,4 @@
-package com.example.pprietom.restaurantmvp.restaurant.PresentationLayer;
+package com.example.pprietom.restaurantmvp.restaurant.presentationLayer;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -8,9 +8,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.pprietom.restaurantmvp.R;
+import com.google.firebase.FirebaseApp;
 
 public class BossActivity extends AppCompatActivity implements BossView, View.OnClickListener {
-    static final String TAG = BossActivity.class.getSimpleName();
+    private static final String TAG = BossActivity.class.getSimpleName();
 
     /*****VARIABLES******/
     //region Variables
@@ -27,6 +28,7 @@ public class BossActivity extends AppCompatActivity implements BossView, View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
         getReferences(); //Todo Buternkife and then with kt is not necesary
+        FirebaseApp.initializeApp(this);
 
         restaurantPresenterInterface = new RestaurantPresenter(this);
     }
@@ -48,11 +50,12 @@ public class BossActivity extends AppCompatActivity implements BossView, View.On
 
     //endregion
 
+
     /*********ACCESS VIEW**********/
     //region
     @Override
-    public void setRecipeCooked(int recipeCooked) {
-        tv_food_cooked.setText(getString(recipeCooked));
+    public void setRecipeCooked(String recipeCooked) {
+        tv_food_cooked.setText(recipeCooked);
     }
 
     @Override

@@ -1,11 +1,11 @@
-package com.example.pprietom.restaurantmvp.restaurant.PresentationLayer;
+package com.example.pprietom.restaurantmvp.restaurant.presentationLayer;
 
 /**
  * Created by Pabel on 09/03/2018.
  **/
 
 public interface BossView {
-    void setRecipeCooked(int recipeCooked);
+    void setRecipeCooked(String recipeCooked);
 
     void setRecipeError(int recipeError);
 

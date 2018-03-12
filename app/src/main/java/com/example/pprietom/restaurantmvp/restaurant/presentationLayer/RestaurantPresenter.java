@@ -1,8 +1,8 @@
-package com.example.pprietom.restaurantmvp.restaurant.PresentationLayer;
+package com.example.pprietom.restaurantmvp.restaurant.presentationLayer;
 
 import com.example.pprietom.restaurantmvp.R;
-import com.example.pprietom.restaurantmvp.restaurant.DomainLayer.RestaurantInteractor;
-import com.example.pprietom.restaurantmvp.restaurant.DomainLayer.RestaurantInteractorInterface;
+import com.example.pprietom.restaurantmvp.restaurant.domainLayer.RestaurantInteractor;
+import com.example.pprietom.restaurantmvp.restaurant.domainLayer.RestaurantInteractorInterface;
 
 /**
  * Created by Pabel on 09/03/2018.
@@ -18,7 +18,7 @@ public class RestaurantPresenter implements RestaurantPresenterInterface {
 
     RestaurantPresenter(BossView bossView) {
         this.bossView = bossView;
-        this.restaurantInteractorInterface = new RestaurantInteractor();
+        this.restaurantInteractorInterface = new RestaurantInteractor(this);
     }
 
     @Override
@@ -28,20 +28,13 @@ public class RestaurantPresenter implements RestaurantPresenterInterface {
             returnError(s);
             return;
         }
-
-        restaurantInteractorInterface.cookFood(s, new RestaurantInteractorInterface.ResultFoodBookedListener() {
-            @Override
-            public void foodBookedIsCorrect(int foodCooked) {
-                bossView.setRecipeCooked(foodCooked);
-            }
-
-            @Override
-            public void foodBookedIsWrong(int foodNotCooked) {
-                bossView.setRecipeError(foodNotCooked);
-            }
-        });
+        restaurantInteractorInterface.cookFood(s);
     }
 
+    @Override
+    public void foodBookedResponse(String foodCooked) {
+        bossView.setRecipeCooked(foodCooked);
+    }
 
     /*+++++++++++++Axuliar+++++++++++*/
     //region
