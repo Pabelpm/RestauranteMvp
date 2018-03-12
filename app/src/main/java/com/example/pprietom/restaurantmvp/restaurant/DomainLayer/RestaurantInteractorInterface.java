@@ -1,4 +1,4 @@
-package com.example.pprietom.restaurantmvp.restaurant;
+package com.example.pprietom.restaurantmvp.restaurant.DomainLayer;
 
 /**
  * Created by Pabel on 09/03/2018.

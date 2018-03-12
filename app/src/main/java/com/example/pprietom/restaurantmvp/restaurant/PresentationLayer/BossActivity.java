@@ -1,4 +1,4 @@
-package com.example.pprietom.restaurantmvp.restaurant;
+package com.example.pprietom.restaurantmvp.restaurant.PresentationLayer;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;

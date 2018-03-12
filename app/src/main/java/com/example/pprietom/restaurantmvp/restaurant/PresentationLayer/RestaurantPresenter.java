@@ -1,6 +1,8 @@
-package com.example.pprietom.restaurantmvp.restaurant;
+package com.example.pprietom.restaurantmvp.restaurant.PresentationLayer;
 
 import com.example.pprietom.restaurantmvp.R;
+import com.example.pprietom.restaurantmvp.restaurant.DomainLayer.RestaurantInteractor;
+import com.example.pprietom.restaurantmvp.restaurant.DomainLayer.RestaurantInteractorInterface;
 
 /**
  * Created by Pabel on 09/03/2018.

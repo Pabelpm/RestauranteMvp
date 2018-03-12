@@ -1,4 +1,4 @@
-package com.example.pprietom.restaurantmvp.restaurant;
+package com.example.pprietom.restaurantmvp.restaurant.DomainLayer;
 
 import com.example.pprietom.restaurantmvp.R;
 import com.example.pprietom.restaurantmvp.Recipes;
