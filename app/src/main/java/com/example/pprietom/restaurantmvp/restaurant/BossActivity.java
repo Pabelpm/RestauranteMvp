@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.pprietom.restaurantmvp.R;
 
-public class BossActivity extends AppCompatActivity implements BossRestaurantView, View.OnClickListener {
+public class BossActivity extends AppCompatActivity implements BossView, View.OnClickListener {
     static final String TAG = BossActivity.class.getSimpleName();
 
     /*****VARIABLES******/
@@ -17,7 +17,7 @@ public class BossActivity extends AppCompatActivity implements BossRestaurantVie
     private EditText ed_food_like_want;
     private TextView tv_food_cooked;
 
-    private RestaurantPresenter restaurantPresenter;
+    private RestaurantPresenterInterface restaurantPresenterInterface;
     //endregion
 
     /*****LIFE CYCLE******/
@@ -28,7 +28,7 @@ public class BossActivity extends AppCompatActivity implements BossRestaurantVie
         setContentView(R.layout.activity_restaurant);
         getReferences(); //Todo Buternkife and then with kt is not necesary
 
-        restaurantPresenter = new RestaurantPresenterImp(this);
+        restaurantPresenterInterface = new RestaurantPresenter(this);
     }
     //endregion
 
@@ -38,7 +38,7 @@ public class BossActivity extends AppCompatActivity implements BossRestaurantVie
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_book_your_food:
-                restaurantPresenter.bookYourFood(ed_food_like_want.getText().toString());
+                restaurantPresenterInterface.bookYourFood(ed_food_like_want.getText().toString());
                 break;
 
             default:
