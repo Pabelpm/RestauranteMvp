@@ -1,22 +1,26 @@
 package com.example.pprietom.restaurantmvp.restaurant.presentationLayer;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.pprietom.restaurantmvp.R;
 import com.google.firebase.FirebaseApp;
 
-public class BossActivity extends AppCompatActivity implements BossView, View.OnClickListener {
+
+public class BossActivity extends AppCompatActivity implements BossView {
     private static final String TAG = BossActivity.class.getSimpleName();
 
     /*****VARIABLES******/
     //region Variables
     private EditText ed_food_like_want;
     private TextView tv_food_cooked;
+
+    private Button bt_subscription_book_your_food;
 
     private RestaurantPresenterInterface restaurantPresenterInterface;
     //endregion
@@ -35,18 +39,6 @@ public class BossActivity extends AppCompatActivity implements BossView, View.On
     //endregion
 
     /******ON CLICKS******/
-    //region OnClicks
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.bt_book_your_food:
-                restaurantPresenterInterface.bookYourFood(ed_food_like_want.getText().toString());
-                break;
-
-            default:
-                Snackbar.make(getWindow().getDecorView().getRootView(), "Click not detected", Snackbar.LENGTH_LONG).show();
-        }
-    }
 
     //endregion
 
@@ -67,6 +59,19 @@ public class BossActivity extends AppCompatActivity implements BossView, View.On
     public void setEditextEmptyError(int recipeError) {
         ed_food_like_want.setError(getString(recipeError));
     }
+
+    @Override
+    public View getFoodButton() {
+        return bt_subscription_book_your_food;
+    }
+
+    @Override
+    public String getTextFromEditext() {
+        Log.e(TAG, "saco el valor del editext "+ ed_food_like_want.getText().toString() );
+        return ed_food_like_want.getText().toString();
+    }
+
+
     //endRegion
 
     /******AUXILIAR ******/
@@ -74,7 +79,7 @@ public class BossActivity extends AppCompatActivity implements BossView, View.On
     private void getReferences() {
         ed_food_like_want = (EditText) findViewById(R.id.ed_food_like_want);
         tv_food_cooked = (TextView) findViewById(R.id.tv_food_cooked);
-        findViewById(R.id.bt_book_your_food).setOnClickListener(this);
+        bt_subscription_book_your_food = (Button) findViewById(R.id.bt_book_your_food);
     }
     //endregion
 }

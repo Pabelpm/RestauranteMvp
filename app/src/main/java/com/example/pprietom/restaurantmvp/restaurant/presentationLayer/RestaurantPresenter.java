@@ -6,6 +6,7 @@ import com.example.pprietom.restaurantmvp.restaurant.dataLayer.data.Recipe;
 import com.example.pprietom.restaurantmvp.restaurant.dataLayer.data.Recipes;
 import com.example.pprietom.restaurantmvp.restaurant.domainLayer.RestaurantInteractor;
 import com.example.pprietom.restaurantmvp.restaurant.domainLayer.RestaurantInteractorInterface;
+import com.jakewharton.rxbinding2.view.RxView;
 
 /**
  * Created by Pabel on 09/03/2018.
@@ -24,24 +25,26 @@ public class RestaurantPresenter implements RestaurantPresenterInterface {
         this.bossView = bossView;
         this.restaurantInteractorInterface = new RestaurantInteractor(this);
         this.repository = new Repository();
+        initializeOnclicks();
     }
 
-    @Override
-    public void bookYourFood(String s) {
-        //If the booking of the food send the error to de interface and return
-        if (!checkBookFoodIsCorrect(s)) {
-            returnError(s);
-            return;
-        }
-        repository.getRecipesFromFirebase(s).subscribe(
-                recipes -> {
-                    bossView.setRecipeCooked(thereIsTheRecipe(s, recipes));
-                },
-                throwable ->
-                        bossView.setRecipeCooked(throwable.getMessage()));
+    private void initializeOnclicks() {
+        RxView.clicks(bossView.getFoodButton()).subscribe(
+                aVoid -> {
+                    String s = bossView.getTextFromEditext();
+                    if (!checkBookFoodIsCorrect(s)) {
+                        returnError(s);
+                        return;
+                    }
+
+                repository.getRecipesFromFirebase(s).subscribe(
+                        recipes -> {
+                            bossView.setRecipeCooked(thereIsTheRecipe(s, recipes));
+                        },
+                        throwable ->
+                                bossView.setRecipeCooked(throwable.getMessage()));
+                });
     }
-
-
 
     /*+++++++++++++Axuliar+++++++++++*/
     //region
