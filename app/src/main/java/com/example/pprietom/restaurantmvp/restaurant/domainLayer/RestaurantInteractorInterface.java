@@ -6,5 +6,5 @@ package com.example.pprietom.restaurantmvp.restaurant.domainLayer;
 
 public interface RestaurantInteractorInterface {
 
-    void cookFood(String cookFood);
+    //void cookFood(String cookFood);
 }

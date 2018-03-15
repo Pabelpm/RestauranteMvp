@@ -19,34 +19,4 @@ public class RestaurantInteractor implements RestaurantInteractorInterface {
         this.restaurantPresenter = restaurantPresenter;
         repository = new Repository();
     }
-
-    /**
-     * This method return the recipe for your peticion
-     *
-     * @param cookFood the name of recipe that you want
-     */
-    @Override
-    public void cookFood(final String cookFood) {
-        RepositoryInterface.ResultGetRecipes resultGetRecipes = new RepositoryInterface.ResultGetRecipes() {
-            @Override
-            public void getRecipesIsCorrect(Recipes recipes) {
-                restaurantPresenter.foodBookedResponse(thereIsTheRecipe(cookFood,recipes));
-            }
-
-            @Override
-            public void getRecipesIsWrong(Recipes recipes) {
-                restaurantPresenter.foodBookedResponse("We could not access the database");
-            }
-        };
-        repository.getRecipesFromFirebase(resultGetRecipes);
-    }
-
-    private String thereIsTheRecipe(String cookFood, Recipes recipes){
-        for (Recipe recipe : recipes.getRecipes()) {
-            if(recipe.getName().equals(cookFood)){
-                return recipe.getValue();
-            }
-        }
-        return "Sorry we havent this recipe.";
-    }
 }

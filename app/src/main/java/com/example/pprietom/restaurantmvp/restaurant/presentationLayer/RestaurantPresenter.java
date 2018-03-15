@@ -1,6 +1,9 @@
 package com.example.pprietom.restaurantmvp.restaurant.presentationLayer;
 
 import com.example.pprietom.restaurantmvp.R;
+import com.example.pprietom.restaurantmvp.restaurant.dataLayer.Repository;
+import com.example.pprietom.restaurantmvp.restaurant.dataLayer.data.Recipe;
+import com.example.pprietom.restaurantmvp.restaurant.dataLayer.data.Recipes;
 import com.example.pprietom.restaurantmvp.restaurant.domainLayer.RestaurantInteractor;
 import com.example.pprietom.restaurantmvp.restaurant.domainLayer.RestaurantInteractorInterface;
 
@@ -14,11 +17,13 @@ public class RestaurantPresenter implements RestaurantPresenterInterface {
     //region Variables
     private BossView bossView;
     private RestaurantInteractorInterface restaurantInteractorInterface;
+    private Repository repository;
     //endregion
 
     RestaurantPresenter(BossView bossView) {
         this.bossView = bossView;
         this.restaurantInteractorInterface = new RestaurantInteractor(this);
+        this.repository = new Repository();
     }
 
     @Override
@@ -28,13 +33,15 @@ public class RestaurantPresenter implements RestaurantPresenterInterface {
             returnError(s);
             return;
         }
-        restaurantInteractorInterface.cookFood(s);
+        repository.getRecipesFromFirebase(s).subscribe(
+                recipes -> {
+                    bossView.setRecipeCooked(thereIsTheRecipe(s, recipes));
+                },
+                throwable ->
+                        bossView.setRecipeCooked(throwable.getMessage()));
     }
 
-    @Override
-    public void foodBookedResponse(String foodCooked) {
-        bossView.setRecipeCooked(foodCooked);
-    }
+
 
     /*+++++++++++++Axuliar+++++++++++*/
     //region
@@ -71,6 +78,16 @@ public class RestaurantPresenter implements RestaurantPresenterInterface {
         if (trim.isEmpty())
             return 0;
         return trim.split("\\s+").length;
+    }
+
+    //TODO deberia hacerlo el Interactor no ?
+    private String thereIsTheRecipe(String cookFood, Recipes recipes) {
+        for (Recipe recipe : recipes.getRecipes()) {
+            if (recipe.getName().equals(cookFood)) {
+                return recipe.getValue();
+            }
+        }
+        return "Sorry we havent this recipe.";
     }
     //endregion
 }

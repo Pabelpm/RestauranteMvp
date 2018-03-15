@@ -6,6 +6,4 @@ package com.example.pprietom.restaurantmvp.restaurant.presentationLayer;
 
 public interface RestaurantPresenterInterface {
     void bookYourFood(String sFoodBooked);
-
-    void foodBookedResponse(String foodCooked);
 }
